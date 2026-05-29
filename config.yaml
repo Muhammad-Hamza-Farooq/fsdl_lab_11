@@ -1,0 +1,7 @@
+experiment:
+  name: reproducibility_lab
+  seed: 42
+
+paths:
+  checkpoint: checkpoints/model.pt
+  log: logs/experiment.log

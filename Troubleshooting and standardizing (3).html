@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive MLOps Troubleshooting Lab</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+.header {
+    background: linear-gradient(135deg,#1e293b,#0f172a);
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid #334155;
+}
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+.header p {
+    color: #94a3b8;
+}
+.task {
+    background: #111827;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+.task-header {
+    padding: 20px;
+    cursor: pointer;
+    background: #1e293b;
+}
+.task-header:hover {
+    background: #273449;
+}
+.task-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.task-body {
+    display: none;
+    padding: 25px;
+}
+.task.active .task-body {
+    display: block;
+}
+.section {
+    margin-bottom: 24px;
+}
+.section h3 {
+    color: #38bdf8;
+}
+pre {
+    background: #020617;
+    padding: 16px;
+    border-radius: 10px;
+    overflow-x: auto;
+    border: 1px solid #334155;
+}
+code {
+    color: #7dd3fc;
+}
+.checklist li {
+    margin-bottom: 10px;
+}
+.badge {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+.quiz {
+    background: #172554;
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+button {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0284c7;
+}
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #64748b;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+<h1>Interactive MLOps Troubleshooting Lab</h1>
+<p>Production-style MLOps engineering challenges for modern ML engineers.</p>
+<p>This lab simulates real-world ML infrastructure failures, debugging workflows, profiling, CI/CD validation, reproducibility, and deployment engineering.</p>
+</div>
+
+<script>
+function toggleTask(id){
+    document.getElementById(id).classList.toggle('active');
+}
+</script>
+
+<div class="task" id="task1">
+<div class="task-header" onclick="toggleTask('task1')">
+<div class="badge">Beginner</div>
+<div class="task-title">Task 1 — Fix the Broken Training Pipeline</div>
+</div>
+<div class="task-body">
+<div class="section">
+<h3>Scenario</h3>
+<p>The ML startup's training pipeline crashes before training starts.</p>
+</div>
+
+<div class="section">
+<h3>Objective</h3>
+<p>Identify and fix the issue inside the training script.</p>
+</div>
+
+<div class="section">
+<h3>Student Instructions</h3>
+<ul class="checklist">
+<li>Create a folder called <code>training</code></li>
+<li>Create the file <code>training/train.py</code></li>
+<li>Paste the provided broken code</li>
+<li>Run the script</li>
+<li>Identify the error</li>
+<li>Fix the pipeline</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>Broken Script</h3>
+<pre><code>import torch
+import torch.nn as nn
+
+model = nn.Linear(10, 2)
+
+x = torch.randn(32, 5)
+
+output = model(x)
+print(output)</code></pre>
+</div>
+
+<div class="section">
+<h3>Expected Learning</h3>
+<p>Tensor dimension mismatch debugging.</p>
+</div>
+
+<div class="quiz">
+<h3>Knowledge Check</h3>
+<p>Why does this script fail?</p>
+<ul>
+<li>A. GPU not available</li>
+<li>B. Batch size is too large</li>
+<li>C. Input tensor dimensions do not match the model input layer</li>
+<li>D. PyTorch is outdated</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="task" id="task2">
+<div class="task-header" onclick="toggleTask('task2')">
+<div class="badge">Beginner</div>
+<div class="task-title">Task 2 — Linting and Formatting Battle</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Clean and standardize poor-quality ML code.</p>
+</div>
+
+<div class="section">
+<h3>Required Tools</h3>
+<pre><code>pip install flake8 black pre-commit</code></pre>
+</div>
+
+<div class="section">
+<h3>Create This File</h3>
+<pre><code># messy_script.py
+import torch,os
+
+
+def train():
+  print( 'training started')
+  
+  x=torch.tensor([1,2,3])
+  print(x)
+
+train()</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Run <code>flake8 messy_script.py</code></li>
+<li>Fix all linting issues</li>
+<li>Run <code>black messy_script.py</code></li>
+<li>Configure pre-commit hooks</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>Create This File</h3>
+<pre><code># .pre-commit-config.yaml
+repos:
+- repo: https://github.com/psf/black
+  rev: 24.1.1
+  hooks:
+    - id: black</code></pre>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task3">
+<div class="task-header" onclick="toggleTask('task3')">
+<div class="badge">Intermediate</div>
+<div class="task-title">Task 3 — Build a Regression Test</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>A previously fixed bug keeps returning after every update.</p>
+</div>
+
+<div class="section">
+<h3>Create These Files</h3>
+<pre><code># math_utils.py
+
+def divide(a,b):
+    return a/b</code></pre>
+
+<pre><code># tests/test_math.py
+from math_utils import divide
+
+def test_divide():
+    assert divide(10,2) == 5</code></pre>
+</div>
+
+<div class="section">
+<h3>Instructions</h3>
+<ul class="checklist">
+<li>Install pytest</li>
+<li>Run <code>pytest</code></li>
+<li>Add tests for divide-by-zero</li>
+<li>Handle exceptions properly</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task4">
+<div class="task-header" onclick="toggleTask('task4')">
+<div class="badge">Intermediate</div>
+<div class="task-title">Task 4 — Detect the Silent Accuracy Bug</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>The model accuracy dropped from 94% to 48% overnight.</p>
+</div>
+
+<div class="section">
+<h3>Broken Dataset Loader</h3>
+<pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+
+X, y = load_iris(return_X_y=True)
+
+# BUG HERE
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.95
+)
+
+print(len(X_train))</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Find why training accuracy collapses</li>
+<li>Fix the split</li>
+<li>Visualize train/test distribution</li>
+<li>Add validation checks</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task5">
+<div class="task-header" onclick="toggleTask('task5')">
+<div class="badge">Advanced</div>
+<div class="task-title">Task 5 — Profile PyTorch Training</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Find bottlenecks slowing down training.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code>import torch
+from torch.profiler import profile, record_function
+
+x = torch.randn(1000,1000)
+y = torch.randn(1000,1000)
+
+with profile() as prof:
+    for _ in range(100):
+        z = torch.matmul(x,y)
+
+print(prof.key_averages().table(sort_by='cpu_time_total'))</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Run the profiler</li>
+<li>Identify expensive operations</li>
+<li>Experiment with GPU acceleration</li>
+<li>Measure runtime improvements</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task6">
+<div class="task-header" onclick="toggleTask('task6')">
+<div class="badge">Advanced</div>
+<div class="task-title">Task 6 — DataLoader Optimization Challenge</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Optimize data loading to maximize GPU utilization.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code>from torch.utils.data import DataLoader, TensorDataset
+import torch
+
+x = torch.randn(10000,100)
+y = torch.randint(0,2,(10000,))
+
+dataset = TensorDataset(x,y)
+
+loader = DataLoader(
+    dataset,
+    batch_size=32,
+    num_workers=0
+)
+
+for batch in loader:
+    pass
+
+print('completed')</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Experiment with num_workers</li>
+<li>Try pin_memory=True</li>
+<li>Benchmark performance</li>
+<li>Create a comparison table</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task7">
+<div class="task-header" onclick="toggleTask('task7')">
+<div class="badge">Advanced</div>
+<div class="task-title">Task 7 — Build a Reproducible Experiment</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Ensure every experiment produces identical results.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code>import random
+import numpy as np
+import torch
+
+seed = 42
+
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+a = torch.randn(3)
+print(a)</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Run the script multiple times</li>
+<li>Verify deterministic output</li>
+<li>Add YAML-based configs</li>
+<li>Save checkpoints and logs</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task8">
+<div class="task-header" onclick="toggleTask('task8')">
+<div class="badge">CI/CD</div>
+<div class="task-title">Task 8 — Create a Validation Pipeline</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create This File</h3>
+<pre><code># scripts/validate.sh
+#!/bin/bash
+
+echo "Running lint checks"
+flake8 .
+
+echo "Running tests"
+pytest
+
+echo "Validation complete"</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Make the script executable</li>
+<li>Run validation pipeline</li>
+<li>Add mypy type checks</li>
+<li>Integrate GitHub Actions</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task9">
+<div class="task-header" onclick="toggleTask('task9')">
+<div class="badge">Deployment</div>
+<div class="task-title">Task 9 — Dockerize the ML Pipeline</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create Dockerfile</h3>
+<pre><code>FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install torch torchvision pytest flake8
+
+CMD ["python", "training/train.py"]</code></pre>
+</div>
+
+<div class="section">
+<h3>Commands</h3>
+<pre><code>docker build -t mlops-lab .
+docker run mlops-lab</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Build the Docker image</li>
+<li>Run the container</li>
+<li>Reduce image size</li>
+<li>Add TensorBoard support</li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="task" id="task11">
+<div class="task-header" onclick="toggleTask('task11')">
+<div class="badge">Testing</div>
+<div class="task-title">Task 11 — Unit Testing Data Preprocessing</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>A preprocessing update silently broke feature normalization.</p>
+</div>
+
+<div class="section">
+<h3>Create This File</h3>
+<pre><code># preprocess.py
+
+import numpy as np
+
+def normalize(data):
+    return (data - np.mean(data)) / np.std(data)</code></pre>
+</div>
+
+<div class="section">
+<h3>Write These Tests</h3>
+<pre><code># tests/test_preprocess.py
+
+from preprocess import normalize
+import numpy as np
+
+def test_normalize_mean():
+    data = np.array([1,2,3,4,5])
+    normalized = normalize(data)
+
+    assert round(normalized.mean(), 5) == 0</code></pre>
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+<ul class="checklist">
+<li>Add tests for NaN values</li>
+<li>Add tests for empty arrays</li>
+<li>Add tests for single-value arrays</li>
+<li>Measure test coverage</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task12">
+<div class="task-header" onclick="toggleTask('task12')">
+<div class="badge">Monitoring</div>
+<div class="task-title">Task 12 — Detect Data Drift</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Detect differences between training and production data distributions.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># drift_detection.py
+
+import numpy as np
+from scipy.stats import ks_2samp
+
+train = np.random.normal(0,1,1000)
+production = np.random.normal(2,1,1000)
+
+stat, p = ks_2samp(train, production)
+
+print("P-value:", p)</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Interpret the p-value</li>
+<li>Visualize distributions</li>
+<li>Create automatic drift alerts</li>
+<li>Add logging</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task13">
+<div class="task-header" onclick="toggleTask('task13')">
+<div class="badge">Validation</div>
+<div class="task-title">Task 13 — Validate Models Before Deployment</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>A low-quality model was deployed to production.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># validate_model.py
+
+metrics = {
+    "accuracy": 0.82,
+    "f1": 0.79
+}
+
+THRESHOLD = 0.85
+
+if metrics["accuracy"] < THRESHOLD:
+    raise Exception("Model failed validation")</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Add ROC-AUC checks</li>
+<li>Add latency checks</li>
+<li>Add memory validation</li>
+<li>Add deployment approval logic</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task14">
+<div class="task-header" onclick="toggleTask('task14')">
+<div class="badge">API Testing</div>
+<div class="task-title">Task 14 — Test ML API Endpoints</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create FastAPI App</h3>
+<pre><code># app.py
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.post("/predict")
+def predict(data: list):
+    return {"prediction": sum(data)}</code></pre>
+</div>
+
+<div class="section">
+<h3>Create API Tests</h3>
+<pre><code># tests/test_api.py
+
+from fastapi.testclient import TestClient
+from app import app
+
+client = TestClient(app)
+
+def test_prediction():
+    response = client.post("/predict", json=[1,2,3])
+
+    assert response.status_code == 200</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Test invalid input</li>
+<li>Test empty payloads</li>
+<li>Test huge requests</li>
+<li>Test concurrent requests</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task15">
+<div class="task-header" onclick="toggleTask('task15')">
+<div class="badge">Training Stability</div>
+<div class="task-title">Task 15 — Detect NaN Loss During Training</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>Training randomly explodes after several epochs.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># unstable_training.py
+
+import torch
+
+x = torch.tensor([1.0], requires_grad=True)
+
+for i in range(100):
+    y = x ** 10
+    y.backward()
+
+    print(x.grad)</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Detect NaN gradients</li>
+<li>Add gradient clipping</li>
+<li>Add safe stopping</li>
+<li>Add training monitoring</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task16">
+<div class="task-header" onclick="toggleTask('task16')">
+<div class="badge">Integration Testing</div>
+<div class="task-title">Task 16 — End-to-End Pipeline Testing</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create Pipeline</h3>
+<pre><code># pipeline.py
+
+def load_data():
+    return [1,2,3]
+
+def preprocess(data):
+    return [x*2 for x in data]
+
+def predict(data):
+    return sum(data)</code></pre>
+</div>
+
+<div class="section">
+<h3>Create Tests</h3>
+<pre><code># tests/test_pipeline.py
+
+from pipeline import *
+
+def test_pipeline():
+    data = load_data()
+    processed = preprocess(data)
+    result = predict(processed)
+
+    assert result == 12</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Add integration tests</li>
+<li>Add logging validation</li>
+<li>Add timing checks</li>
+<li>Mock database inputs</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task17">
+<div class="task-header" onclick="toggleTask('task17')">
+<div class="badge">Reproducibility</div>
+<div class="task-title">Task 17 — Verify Reproducibility</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># reproducibility.py
+
+import random
+import numpy as np
+import torch
+
+seed = 42
+
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+
+print(torch.randn(3))</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Run multiple times</li>
+<li>Verify deterministic outputs</li>
+<li>Save configs</li>
+<li>Compare experiment outputs</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task18">
+<div class="task-header" onclick="toggleTask('task18')">
+<div class="badge">Stress Testing</div>
+<div class="task-title">Task 18 — Stress Test the Training Pipeline</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># stress_test.py
+
+import torch
+
+x = torch.randn(100000,1000)
+
+print(x.shape)</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Monitor RAM usage</li>
+<li>Monitor GPU usage</li>
+<li>Detect memory leaks</li>
+<li>Optimize batch sizes</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task19">
+<div class="task-header" onclick="toggleTask('task19')">
+<div class="badge">Reliability</div>
+<div class="task-title">Task 19 — Handle Corrupted Checkpoints</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create This Script</h3>
+<pre><code># corrupted_loader.py
+
+import torch
+
+torch.load("broken_model.pt")</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Add exception handling</li>
+<li>Validate checkpoints</li>
+<li>Create backup recovery</li>
+<li>Add automatic rollback</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task20">
+<div class="task-header" onclick="toggleTask('task20')">
+<div class="badge">Chaos Engineering</div>
+<div class="task-title">Task 20 — Chaos Engineering for ML Systems</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>Production systems fail unexpectedly.</p>
+</div>
+
+<div class="section">
+<h3>Students Must Simulate</h3>
+<ul class="checklist">
+<li>Missing datasets</li>
+<li>Wrong configs</li>
+<li>GPU unavailable</li>
+<li>Disk full</li>
+<li>Corrupted artifacts</li>
+<li>Network timeout</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Add retries</li>
+<li>Add logging</li>
+<li>Add graceful recovery</li>
+<li>Build resilient pipelines</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task21">
+<div class="task-header" onclick="toggleTask('task21')">
+<div class="badge">Monitoring</div>
+<div class="task-title">Task 21 — Validate Monitoring Dashboards</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Create Metrics Script</h3>
+<pre><code># monitoring.py
+
+metrics = {
+    "latency": 120,
+    "accuracy": 0.91,
+    "throughput": 500
+}
+
+print(metrics)</code></pre>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Create metric plots</li>
+<li>Detect anomalies</li>
+<li>Create alerts</li>
+<li>Simulate monitoring failures</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task22">
+<div class="task-header" onclick="toggleTask('task22')">
+<div class="badge">Security</div>
+<div class="task-title">Task 22 — Security Testing for ML APIs</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Objective</h3>
+<p>Harden inference APIs against malicious inputs.</p>
+</div>
+
+<div class="section">
+<h3>Students Must Test</h3>
+<ul class="checklist">
+<li>Huge payload attacks</li>
+<li>Invalid JSON</li>
+<li>Adversarial inputs</li>
+<li>Malformed requests</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Add sanitization</li>
+<li>Add rate limiting</li>
+<li>Add validation</li>
+<li>Add security logging</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<div class="task" id="task23">
+<div class="task-header" onclick="toggleTask('task23')">
+<div class="badge">Versioning</div>
+<div class="task-title">Task 23 — Test Model Version Compatibility</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>New models break older clients unexpectedly.</p>
+</div>
+
+<div class="section">
+<h3>Tasks</h3>
+<ul class="checklist">
+<li>Compare schemas</li>
+<li>Validate input/output contracts</li>
+<li>Version APIs</li>
+<li>Add compatibility tests</li>
+</ul>
+</div>
+
+</div>
+</div>
+<div class="task" id="task25">
+<div class="task-header" onclick="toggleTask('task25')">
+<div class="badge">Logging</div>
+<div class="task-title">Task 25 — Introduction to Python Logging</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>The ML training pipeline crashes randomly, but nobody knows where or why because the project uses only <code>print()</code> statements.</p>
+</div>
+
+<div class="section">
+<h3>Objective</h3>
+<p>Learn how professional ML systems use logging instead of print statements.</p>
+</div>
+
+<div class="section">
+<h3>Why Logging Matters in MLOps</h3>
+<ul class="checklist">
+<li>Tracks training progress</li>
+<li>Helps debug failures</li>
+<li>Stores production events</li>
+<li>Monitors deployments</li>
+<li>Detects anomalies</li>
+<li>Provides audit history</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>Create This File</h3>
+
+<pre><code># logging_basics.py
+
+import logging
+
+logging.basicConfig(
+    level=logging.INFO
+)
+
+logging.info("Training started")
+logging.warning("GPU usage is high")
+logging.error("Dataset file missing")</code></pre>
+
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+
+<ul class="checklist">
+<li>Run the script</li>
+<li>Change log levels</li>
+<li>Add DEBUG logs</li>
+<li>Add timestamps</li>
+<li>Add log formatting</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h3>Upgrade the Logger</h3>
+
+<pre><code>logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)</code></pre>
+
+</div>
+
+<div class="quiz">
+<h3>Knowledge Check</h3>
+
+<p>Which logging level should be used for serious failures?</p>
+
+<ul>
+<li>A. DEBUG</li>
+<li>B. INFO</li>
+<li>C. WARNING</li>
+<li>D. ERROR</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+
+<!-- ======================= -->
+
+<div class="task" id="task26">
+<div class="task-header" onclick="toggleTask('task26')">
+<div class="badge">Logging</div>
+<div class="task-title">Task 26 — Logging ML Training Metrics</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>The ML team cannot track training progress across epochs.</p>
+</div>
+
+<div class="section">
+<h3>Objective</h3>
+<p>Log training metrics professionally during model training.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+
+<pre><code># training_logs.py
+
+import logging
+import random
+import time
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+for epoch in range(5):
+
+    loss = round(random.uniform(0.1,1.0), 4)
+    accuracy = round(random.uniform(70,95), 2)
+
+    logging.info(
+        f\"Epoch {epoch+1} | Loss: {loss} | Accuracy: {accuracy}%\"
+    )
+
+    time.sleep(1)</code></pre>
+
+</div>
+
+<div class="section">
+<h3>Expected Output</h3>
+
+<pre><code>2026-05-07 12:10:01 - INFO - Epoch 1 | Loss: 0.83 | Accuracy: 74.22%</code></pre>
+
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+
+<ul class="checklist">
+<li>Log learning rate</li>
+<li>Log GPU usage</li>
+<li>Log validation accuracy</li>
+<li>Save logs into a file</li>
+<li>Create separate WARNING logs for low accuracy</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h3>Save Logs to File</h3>
+
+<pre><code>logging.basicConfig(
+    filename='training.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)</code></pre>
+
+</div>
+
+<div class="quiz">
+<h3>Mini Challenge</h3>
+
+<p>Create a warning whenever accuracy drops below 75%.</p>
+
+</div>
+
+</div>
+</div>
+
+<!-- ======================= -->
+
+<div class="task" id="task27">
+<div class="task-header" onclick="toggleTask('task27')">
+<div class="badge">Advanced Logging</div>
+<div class="task-title">Task 27 — Production Logging and Error Tracking</div>
+</div>
+<div class="task-body">
+
+<div class="section">
+<h3>Scenario</h3>
+<p>A production inference API crashes, but engineers cannot reproduce the issue because errors are not logged properly.</p>
+</div>
+
+<div class="section">
+<h3>Objective</h3>
+<p>Implement structured logging and exception tracking for production ML systems.</p>
+</div>
+
+<div class="section">
+<h3>Create This Script</h3>
+
+<pre><code># production_logging.py
+
+import logging
+
+logging.basicConfig(
+    filename='production.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+def predict(x):
+
+    try:
+
+        result = 100 / x
+
+        logging.info(f\"Prediction successful: {result}\")
+
+        return result
+
+    except Exception as e:
+
+        logging.exception(
+            f\"Prediction failed with input: {x}\"
+        )
+
+predict(10)
+predict(0)</code></pre>
+
+</div>
+
+<div class="section">
+<h3>Student Tasks</h3>
+
+<ul class="checklist">
+<li>Run the script</li>
+<li>Inspect the generated log file</li>
+<li>Add user request IDs</li>
+<li>Add API endpoint logging</li>
+<li>Add separate ERROR log files</li>
+<li>Create rotating logs</li>
+</ul>
+
+</div>
+<div class="footer">
+<p>Interactive MLOps Troubleshooting Lab — 2026 Edition</p>
+<p>Designed for modern ML engineering education.</p>
+</div>
+
+</div>
+</body>
+</html>

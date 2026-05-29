@@ -1,0 +1,16 @@
+2026-05-29 18:55:21,363 - INFO - Experiment: reproducibility_lab
+2026-05-29 18:55:21,363 - INFO - Seed: 42
+2026-05-29 18:55:21,363 - INFO - Output tensor: [0.33669036626815796, 0.12880940735340118, 0.23446236550807953]
+2026-05-29 18:55:21,364 - INFO - Checkpoint saved to checkpoints/model.pt
+2026-05-29 18:55:27,885 - INFO - Experiment: reproducibility_lab
+2026-05-29 18:55:27,885 - INFO - Seed: 42
+2026-05-29 18:55:27,886 - INFO - Output tensor: [0.33669036626815796, 0.12880940735340118, 0.23446236550807953]
+2026-05-29 18:55:27,886 - INFO - Checkpoint saved to checkpoints/model.pt
+2026-05-29 18:56:01,414 - INFO - Experiment: reproducibility_lab
+2026-05-29 18:56:01,415 - INFO - Seed: 42
+2026-05-29 18:56:01,415 - INFO - Output tensor: [0.33669036626815796, 0.12880940735340118, 0.23446236550807953]
+2026-05-29 18:56:01,415 - INFO - Checkpoint saved to checkpoints/model.pt
+2026-05-29 18:56:11,301 - INFO - Experiment: reproducibility_lab
+2026-05-29 18:56:11,301 - INFO - Seed: 42
+2026-05-29 18:56:11,301 - INFO - Output tensor: [0.33669036626815796, 0.12880940735340118, 0.23446236550807953]
+2026-05-29 18:56:11,302 - INFO - Checkpoint saved to checkpoints/model.pt
