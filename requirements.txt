@@ -1,0 +1,20 @@
+# Lab dependencies (CPU PyTorch for smaller/faster install)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch
+torchvision
+numpy
+scipy
+scikit-learn
+matplotlib
+pytest
+pytest-cov
+flake8
+black
+pre-commit
+mypy
+pyyaml
+fastapi
+httpx
+psutil
+tensorboard

@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements-docker.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir --default-timeout=1000 -r requirements-docker.txt
+
+COPY training/log_tensorboard.py training/log_tensorboard.py
+
+RUN python training/log_tensorboard.py
+
+EXPOSE 6006
+
+CMD ["tensorboard", "--logdir=runs", "--host=0.0.0.0", "--port=6006"]

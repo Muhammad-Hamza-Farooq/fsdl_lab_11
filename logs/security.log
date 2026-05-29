@@ -1,0 +1,10 @@
+2026-05-29 22:26:37,919 - INFO - Predict request from testclient
+2026-05-29 22:26:37,919 - WARNING - Huge payload blocked: size=1001
+2026-05-29 22:26:37,944 - INFO - Predict request from testclient
+2026-05-29 22:26:37,944 - WARNING - Invalid/adversarial input blocked
+2026-05-29 22:26:37,962 - INFO - Predict request from testclient
+2026-05-29 22:29:57,954 - INFO - Predict request from testclient
+2026-05-29 22:29:57,954 - WARNING - Huge payload blocked: size=1001
+2026-05-29 22:29:57,971 - INFO - Predict request from testclient
+2026-05-29 22:29:57,972 - WARNING - Invalid/adversarial input blocked
+2026-05-29 22:29:57,992 - INFO - Predict request from testclient

@@ -1,0 +1,7 @@
+# CPU-only PyTorch (much smaller download than CUDA build)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
+pytest
+flake8
+tensorboard

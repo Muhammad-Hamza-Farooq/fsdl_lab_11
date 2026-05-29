@@ -1,0 +1,16 @@
+2026-05-29 22:26:30,616 - INFO - Request req-100 on /predict with input=10
+2026-05-29 22:26:30,616 - INFO - Prediction successful for req-100: 10.0
+2026-05-29 22:26:30,616 - INFO - Request req-101 on /predict with input=0
+2026-05-29 22:26:30,616 - ERROR - Prediction failed for req-101 with input=0
+Traceback (most recent call last):
+  File "E:\University\Semester 6\ML Ops\Labs\Class Activities\Lab 11 - FSDL 0405\New folder\New folder\production_logging.py", line 32, in predict
+    result = 100 / x
+ZeroDivisionError: division by zero
+2026-05-29 22:33:27,712 - INFO - Request req-100 on /predict with input=10
+2026-05-29 22:33:27,712 - INFO - Prediction successful for req-100: 10.0
+2026-05-29 22:33:27,712 - INFO - Request req-101 on /predict with input=0
+2026-05-29 22:33:27,712 - ERROR - Prediction failed for req-101 with input=0
+Traceback (most recent call last):
+  File "E:\University\Semester 6\ML Ops\Labs\Class Activities\Lab 11 - FSDL 0405\New folder\New folder\production_logging.py", line 32, in predict
+    result = 100 / x
+ZeroDivisionError: division by zero

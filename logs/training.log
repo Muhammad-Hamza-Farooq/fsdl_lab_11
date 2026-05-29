@@ -1,0 +1,11 @@
+2026-05-29 22:26:29,404 - INFO - Epoch 1 | LR: 0.001 | Loss: 0.825 | Accuracy: 76.55% | Val Accuracy: 79.59% | GPU: 57.3%
+2026-05-29 22:26:29,607 - INFO - Epoch 2 | LR: 0.001 | Loss: 0.1461 | Accuracy: 75.05% | Val Accuracy: 91.14% | GPU: 47.5%
+2026-05-29 22:26:29,811 - INFO - Epoch 3 | LR: 0.001 | Loss: 0.1556 | Accuracy: 83.34% | Val Accuracy: 84.62% | GPU: 40.6%
+2026-05-29 22:26:30,017 - INFO - Epoch 4 | LR: 0.001 | Loss: 0.7409 | Accuracy: 70.51% | Val Accuracy: 72.96% | GPU: 78.8%
+2026-05-29 22:26:30,018 - WARNING - Low training accuracy at epoch 4: 70.51%
+2026-05-29 22:26:30,229 - INFO - Epoch 5 | LR: 0.001 | Loss: 0.7947 | Accuracy: 75.03% | Val Accuracy: 84.53% | GPU: 52.7%
+2026-05-29 22:31:43,619 - INFO - Epoch 1 | LR: 0.001 | Loss: 0.8477 | Accuracy: 84.21% | Val Accuracy: 80.49% | GPU: 73.8%
+2026-05-29 22:31:43,830 - INFO - Epoch 2 | LR: 0.001 | Loss: 0.4811 | Accuracy: 78.86% | Val Accuracy: 68.54% | GPU: 73.1%
+2026-05-29 22:31:44,047 - INFO - Epoch 3 | LR: 0.001 | Loss: 0.9298 | Accuracy: 79.11% | Val Accuracy: 77.41% | GPU: 56.6%
+2026-05-29 22:31:44,256 - INFO - Epoch 4 | LR: 0.001 | Loss: 0.7573 | Accuracy: 92.75% | Val Accuracy: 71.95% | GPU: 52.9%
+2026-05-29 22:31:44,461 - INFO - Epoch 5 | LR: 0.001 | Loss: 0.8972 | Accuracy: 81.41% | Val Accuracy: 76.91% | GPU: 89.5%
